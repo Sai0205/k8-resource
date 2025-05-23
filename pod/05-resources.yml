@@ -10,7 +10,7 @@ spec:
   containers:
   - name: nginx
     image: nginx:latest
-    containerPort: 80
+    containerPorts: 80
     resources:
       requests:
         memory: "64Mi"
