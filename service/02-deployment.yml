@@ -13,7 +13,7 @@ spec:
       tier: frontend
   template:
     metadata:
-      name: nginx
+      name: nginx1
       labels:
         app: nginx
         tier: frontend
