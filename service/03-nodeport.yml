@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ClusterIP
+  name: clusterip
 spec:
   type: ClusterIP
   selector:
