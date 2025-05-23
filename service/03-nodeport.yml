@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service01
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+        tier: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ENVIRONMENT
+              value: production
+            - name: VERSION
+              value: v1.0
+            - name: AUTHOR
+              value: deepak
+
+---
+
+apiVersion: v1
+kind: service
+metadata:
+  name: ClusterIP
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+    tier: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
