@@ -16,7 +16,7 @@ spec:
     metadata:
       name: frontend
       labels:
-        app: robos
+        app: nginx
         tier: frontend
         environment: production
     spec:
