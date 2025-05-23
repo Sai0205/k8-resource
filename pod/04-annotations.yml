@@ -7,7 +7,7 @@ metadata:
     com.project.name: roboshop
     com.project.version: v1.0
 spec:
-  conatiners:
+  containers:
     - name: nginx
       image: nginx:latest
       ports:
