@@ -4,7 +4,7 @@ metadata:
     name: nodeport
 spec:
   replicas: 5
-  selectors:
+  selector:
     matchlabels:
       app: f1
       env: prd
