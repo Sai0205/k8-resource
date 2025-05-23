@@ -8,7 +8,7 @@ metadata:
 spec:
   replicas: 5
   selector:
-    matchlabels:
+    matchLabels:
       app: nginx
       tier: frontend
   template:
