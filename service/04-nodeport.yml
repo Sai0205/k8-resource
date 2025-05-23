@@ -5,7 +5,7 @@ metadata:
 spec:
   replicas: 5
   selector:
-    matchlabels:
+    matchLabels:
       app: f1
       env: prd
   template:
