@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:   
+    name: nodeport
+spec:
+  replicas: 5
+  selectors:
+    matchlabels:
+      app: f1
+      env: prd
+  template:
+    metadata:
+      name: nodeport
+      labels:
+        app: f1
+        env: prd
+    spec:
+      containers:
+        - name: nginx1
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport
+spec:
+  selector:
+    app: f1
+    env: prd
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+      nodePort: 30001
