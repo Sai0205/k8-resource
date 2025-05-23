@@ -7,7 +7,7 @@ metadata:
     env: prod
     app: web
 spec:
-  restartPolicy: never
+  restartPolicy: Never
   containers:
   - name: nginx
     image: nginx:latest
