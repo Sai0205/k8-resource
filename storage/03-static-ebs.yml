@@ -8,7 +8,7 @@ spec:
   - ReadWriteOnce
   awsElasticBlockStore:
     fsType: ex4
-    volumeId: vol-041e295294ca3f829
+    volumeID: vol-041e295294ca3f829
   capacity:
     storage: 20Gi
 
@@ -38,7 +38,7 @@ spec:
     matchLabels:
       tier: front
       env: prd
-  templates:
+  template:
     metadata:
       name: ngs
       labels:
