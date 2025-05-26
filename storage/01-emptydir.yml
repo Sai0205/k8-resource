@@ -29,7 +29,7 @@ metadata:
     app: nginx
 spec:
   replicas: 1
-  selectors:
+  selector:
     matchLabels:
       app: nginx
   template:
