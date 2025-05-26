@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: ebs-static
+spec:
+  storageClass: ""
+  accessModes:
+  - ReadWriteOnce
+  awsElasticBlockStore:
+    fsType: ex4
+    volumeId: vol-041e295294ca3f829
+  capacity:
+    storage: 20Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVloumeClaim
+matadata: 
+  name: static-ebs
+spec:
+  StorageClass: ""
+  accessMode: 
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: ng
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: front
+      env: prd
+  templates:
+    metadata:
+      name: ngs
+      labels:
+        tier: front
+        env: prd
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-html
+          path: "/usr/share/nginx/html"
+      volumes:
+      - name: nginx-html
+        persistentVolumeClaim:
+          claimName: static-ebs  
