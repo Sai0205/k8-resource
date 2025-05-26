@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: fluentd
+  labels:
+    env: prod
+spec:
+  selector:
+    matchLabels:
+      version: v1
+  template:
+    metadata:
+      name: hostpath
+      labels:
+        version: v1
+    spec:
+      containers:
+        - name: fluentd
+          image: quay.io/fluentd_elasticsearch/fluentd:v2.5.2
+          volumeMounts:
+            - name: serverlogs
+              mountPath: /var/log
+          
+      volumes:
+        - name: serverlogs
+          hostPath: 
+            path: /
