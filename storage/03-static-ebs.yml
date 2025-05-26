@@ -33,7 +33,7 @@ kind: Deployment
 metadata: 
   name: ng
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       tier: front
@@ -45,6 +45,8 @@ spec:
         tier: front
         env: prd
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ip-192-168-10-52.eu-north-1.compute.internal
       containers:
       - name: nginx
         image: nginx
